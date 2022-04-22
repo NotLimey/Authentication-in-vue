@@ -64,7 +64,8 @@ export default {
           class="flex flex-col bg-stone-700 text-stone-200 p-5 py-10 rounded-lg shadow-md">
         <div 
           class="flex justify-between gap-x-8"
-          v-for="(value, key, index) in user"
+          v-for="(value, key) in user"
+          v-bind:key="value.id"
         >
           <b>{{ key }}: </b>
           <p>{{ value }}</p>
