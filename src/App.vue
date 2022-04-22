@@ -19,6 +19,7 @@ export default {
           "Authorization": `Bearer ${JSON.parse(token)}`
         }
     })
+    console.log(result.data)
     if(result.status === 200) {
       this.user = result.data;
     }
@@ -40,7 +41,7 @@ export default {
     </div>
     <login-component />
   </div>
-  <div class="flex flex-col gap-y-4" v-if="user !== null">
+  <div v-if="user !== null" class="flex flex-col gap-y-4">
     <h2 class="text-3xl text-center">Logged in as <b>{{user.userName}}</b></h2>
     <div class="flex justify-center">
       <button
@@ -57,7 +58,7 @@ export default {
         <div 
           class="flex justify-between gap-x-8"
           v-for="(value, key) in user"
-          v-bind:key="value.id"
+          :key="value"
         >
           <b>{{ key }}: </b>
           <p>{{ value }}</p>
