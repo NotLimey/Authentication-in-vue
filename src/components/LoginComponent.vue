@@ -4,8 +4,7 @@ export default {
   data() {
     return {
       email: "",
-      password: "",
-      count: 1
+      password: ""
     }
   },
   methods: {
@@ -25,15 +24,6 @@ export default {
           }
       }
   },
-
-  // `mounted` is a lifecycle hook which we will explain later
-  mounted() {
-    // `this` refers to the component instance.
-    console.log(this.count) // => 1
-
-    // data can be mutated as well
-    this.count = 2
-  }
 }
 </script>
 
