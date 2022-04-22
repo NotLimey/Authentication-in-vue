@@ -41,7 +41,7 @@ export default {
     <login-component />
   </div>
   <div class="flex flex-col gap-y-4" v-if="user !== null">
-    <h2 class="text-3xl">Logged in as <b>{{user.userName}}</b></h2>
+    <h2 class="text-3xl text-center">Logged in as <b>{{user.userName}}</b></h2>
     <div class="flex justify-center">
       <button
         type="button"
@@ -51,6 +51,26 @@ export default {
         Logout
       </button>
     </div>
+    <details>
+      <summary>See user information</summary>
+      <!-- <li 
+        class="flex bg-stone-700 text-stone-200 p-5 py-10 rounded-lg shadow-md"
+        v-for="value in Object.keys(user)"
+        v-bind="value.id"
+      >
+        <p>{{ value }}</p>
+      </li> -->
+      <div
+          class="flex flex-col bg-stone-700 text-stone-200 p-5 py-10 rounded-lg shadow-md">
+        <div 
+          class="flex justify-between gap-x-8"
+          v-for="(value, key, index) in user"
+        >
+          <b>{{ key }}: </b>
+          <p>{{ value }}</p>
+        </div>
+      </div>
+    </details>
   </div>
 </template>
 
@@ -67,6 +87,10 @@ export default {
 
 header {
   line-height: 1.5;
+}
+
+details {
+  transition: all .5s;
 }
 
 .logo {
