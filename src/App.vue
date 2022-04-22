@@ -1,0 +1,112 @@
+<script setup>
+import LoginComponent from "./components/LoginComponent.vue";
+</script>
+
+<script>
+import axios from 'axios';
+export default {
+  data() {
+    return {
+      user: null
+    }
+  },
+  async mounted() {
+    const token = window.localStorage.getItem("token")
+    if(!token) return;
+    const result = await axios("https://localhost:5001/identity/user",
+      {
+        headers: {
+          "Authorization": `Bearer ${JSON.parse(token)}`
+        }
+    })
+    if(result.status === 200) {
+      this.user = result.data;
+    }
+  },
+  methods: {
+    logout() {
+      window.localStorage.removeItem("token");
+      window.location.reload();
+    }
+  }
+}
+</script>
+
+
+<template>
+  <div v-if="user === null" class="flex flex-col md:flex-row gap-10 items-center">
+    <div>
+      <h1 class="text-2xl">Authentication in vue</h1>
+    </div>
+    <login-component />
+  </div>
+  <div class="flex flex-col gap-y-4" v-if="user !== null">
+    <h2 class="text-3xl">Logged in as <b>{{user.userName}}</b></h2>
+    <div class="flex justify-center">
+      <button
+        type="button"
+        className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+        @click="logout"
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+</template>
+
+<style>
+@import "./assets/base.css";
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  font-weight: normal;
+}
+
+header {
+  line-height: 1.5;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 2rem;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  header {
+    display: flex;
+    place-items: center;
+    padding-right: calc(var(--section-gap) / 2);
+  }
+
+  header .wrapper {
+    display: flex;
+    place-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    margin: 0 2rem 0 0;
+  }
+}
+</style>
