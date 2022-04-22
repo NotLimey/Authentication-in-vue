@@ -66,7 +66,7 @@ export default {
     </details>
   </div>
   <div class="fixed bottom-14 w-full flex justify-center left-0">
-    <p>Made with love by <a href="https://github.com/notlimey" target="_blank" rel="noreferrer">Limey</a></p>
+    <p>Made with <span class="text-red-500 font-bold">love</span> by <a href="https://github.com/notlimey" target="_blank" rel="noreferrer">Limey</a></p>
   </div>
 </template>
 
