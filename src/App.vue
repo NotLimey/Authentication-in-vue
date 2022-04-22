@@ -52,8 +52,8 @@ export default {
         Logout
       </button>
     </div>
-    <details>
-      <summary>See user information</summary>
+    <details class="mt-7">
+      <summary class="text-center">See user information</summary>
       <div class="flex flex-col bg-stone-700 text-stone-200 p-5 py-10 rounded-lg shadow-md">
         <div 
           class="flex justify-between gap-x-8"
