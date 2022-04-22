@@ -53,15 +53,7 @@ export default {
     </div>
     <details>
       <summary>See user information</summary>
-      <!-- <li 
-        class="flex bg-stone-700 text-stone-200 p-5 py-10 rounded-lg shadow-md"
-        v-for="value in Object.keys(user)"
-        v-bind="value.id"
-      >
-        <p>{{ value }}</p>
-      </li> -->
-      <div
-          class="flex flex-col bg-stone-700 text-stone-200 p-5 py-10 rounded-lg shadow-md">
+      <div class="flex flex-col bg-stone-700 text-stone-200 p-5 py-10 rounded-lg shadow-md">
         <div 
           class="flex justify-between gap-x-8"
           v-for="(value, key) in user"
@@ -72,6 +64,9 @@ export default {
         </div>
       </div>
     </details>
+  </div>
+  <div class="fixed bottom-14 w-full flex justify-center left-0">
+    <p>Made with love by <a href="https://github.com/notlimey" target="_blank" rel="noreferrer">Limey</a></p>
   </div>
 </template>
 
